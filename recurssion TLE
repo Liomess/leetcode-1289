@@ -1,0 +1,17 @@
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        def f(self,i,rows,n,matrix):
+            
+            if rows==n-1:
+                return matrix[rows][i]
+            count=10**20
+            for j in range(n):
+                if i!=j:
+                    count=min(count,matrix[rows][i]+f(self,j,rows+1,n,matrix))
+            return count
+
+        n=len(matrix)
+        ans=10**20
+        for j in range(n):
+            ans=min(ans,f(self,j,0,n,matrix))
+        return ans
